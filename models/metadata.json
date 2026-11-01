@@ -1,0 +1,31 @@
+{
+    "project_name": "CrediShield AI™",
+    "model_name": "CrediShield_AI_Calibrated_XGBoost_Classifier",
+    "version": "1.0.0",
+    "training_date": "2026-11-01 16:23:43",
+    "data_source": "UCI Credit Card Default (Taiwan, 2005)",
+    "training_observations": 24000,
+    "features_count": 30,
+    "cost_matrix": {
+        "COST_FN": 500,
+        "COST_FP": 100
+    },
+    "optimal_threshold": 0.3591,
+    "test_metrics": {
+        "accuracy": 0.8018,
+        "recall": 0.517,
+        "precision": 0.5559,
+        "f1_score": 0.5357,
+        "roc_auc": 0.7832,
+        "pr_auc": 0.5613,
+        "brier_score": 0.1348
+    },
+    "pipeline_stages": [
+        "Ingestion",
+        "Hygiene",
+        "Feature Engineering",
+        "Imbalance Treatment",
+        "Calibrated XGBoost",
+        "SHAP XAI"
+    ]
+}
