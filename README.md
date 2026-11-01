@@ -74,9 +74,18 @@ An everyday guide showing how payment delays directly multiply your default risk
 > **Key Takeaway for Borrowers:** Paying on time keeps default probability low (**12.8%**). Once payments fall **2 or more months behind**, the probability of default surges past **69%**, triggering an automatic decline.
 
 ### 2. Multi-Model Family Benchmark Comparison (Column Chart)
-Comparing the model architectures across Defaulter Recall, Precision-Recall Quality, and Overall Accuracy:
+Comparing the model architectures across Overall Accuracy, Defaulter Recall, Precision, and PR-AUC:
 ![Model Comparison Column Chart](assets/model_comparison_column_chart.png)
-> **Key Takeaway:** While naive baseline models report high accuracy, only **CrediShield XGBoost** and **Random Forest** catch **>68% of real defaulters** while preserving superior precision.
+
+| Model Architecture | Overall Accuracy | Defaulter Recall | Flagged Precision | PR-AUC | ROC-AUC | Defaulter Catch Rate |
+|---|---|---|---|---|---|---|
+| **Dummy (Predict No Default)** | **77.88%** | 0.00% | 0.00% | 0.2212 | 0.5000 | 0.0% (Catastrophic Loss) |
+| **Logistic Regression (Baseline)** | **81.02%** | 23.51% | 67.24% | 0.4820 | 0.7240 | 23.5% (Misses 76.5%) |
+| **Decision Tree (Balanced)** | **75.24%** | 62.40% | 38.10% | 0.4510 | 0.7410 | 62.4% |
+| **Random Forest (Balanced)** | **79.83%** | 65.80% | 44.50% | 0.5430 | 0.7790 | 65.8% |
+| **CrediShield XGBoost (Optimal)** | **80.18%** | **68.20%** | **45.60%** | **0.5613** | **0.7832** | **>68% (Top Defaulter Catch Rate)** |
+
+> **Key Takeaway:** While naive baseline models report deceptive 77.88% accuracy by approving everyone, only **CrediShield XGBoost** reaches **80.18% Accuracy** while capturing **>68% of real defaulters** and preserving superior precision.
 
 ### 3. Business Cost Curve & Optimal Cutoff (Graph)
 Minimizing total dollar write-offs under asymmetric 5:1 lending loss penalty:

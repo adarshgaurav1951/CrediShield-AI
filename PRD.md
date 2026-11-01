@@ -170,9 +170,13 @@ To capture behavioral credit risk patterns, domain-specific features are enginee
 ## 8. Evaluation Framework & Business Cost Optimization
 
 ### 8.1 Primary Evaluation Metrics
-1. **Recall on Default Class ($y=1$):** Measures the proportion of actual defaulters detected:
+1. **Classification Accuracy & Baseline Lift:** Measures overall portfolio prediction correctness:
+   $$\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}$$
+   - *Naive Majority Baseline:* **77.88%** (at 0% defaulter recall).
+   - *Production Standard:* Target $\ge 80.00\%$ Accuracy (achieved: **80.18%**) while strictly maximizing Defaulter Recall.
+2. **Recall on Default Class ($y=1$):** Measures the proportion of actual defaulters detected:
    $$\text{Recall} = \frac{TP}{TP + FN}$$
-2. **Precision on Default Class ($y=1$):** Measures the accuracy of flagged applicants:
+3. **Precision on Default Class ($y=1$):** Measures the accuracy of flagged applicants:
    $$\text{Precision} = \frac{TP}{TP + FP}$$
 3. **PR-AUC (Average Precision):** Preferred ranking metric over ROC-AUC for imbalanced credit default scenarios.
 4. **ROC-AUC:** Measures global discrimination across all operating thresholds.
